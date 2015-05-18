@@ -1,27 +1,26 @@
 
 英文出处：phdata.io。
-这是一组系列博文，目的是详尽介绍 SQL-on-Hadoop 。本系列的第一篇会介绍 Hadoop 系统的存储引擎和在线事务处理（简称 OLTP ）；第二篇将介绍在线分析处理（简称 OLAP ）；第三篇将介绍对 Hadoop 引擎的改进以及在相关替代产品中如何选型等话题。
+这是一组系列博文，目的是详尽介绍 SQL-on-Hadoop 。
+本系列的第一篇会介绍 Hadoop 系统的存储引擎和在线事务处理（简称 OLTP ）；
+第二篇将介绍在线分析处理（简称 OLAP ）；
+第三篇将介绍对 Hadoop 引擎的改进以及在相关替代产品中如何选型等话题。
 
 SQL on Hadoop 是一个既令人兴奋又令人困扰的话题；
-
 几乎每周都有一个新的 SQL on Hadoop 支持项目似乎抓住过社区注意力，哪怕只是一个短暂的瞬间；
-
 在这个系列中，我们会讨论 Hadoop 系统上支持的每一类 SQL 解决方案，并对它们的架构，用例以及其他做出诚实的讨论。
 
 Hadoop 引擎上的 SQL 有许多广泛的应用领域：
 
-数据处理与在线分析处理（OLAP）
-在线事务处理（OLTP）
-存储引擎:
+* 数据处理与在线分析处理（OLAP）
+* 在线事务处理（OLTP）
 
+存储引擎:
 今天 Hadoop 主要有三个存储引擎：分别是 Apache HBase、Apache Hadoop HDFS 和 Hadoop Accumulo。Apache Accumlo与 Hbase 非常相似，但它本是由 NSA 组织创建的项目，历史上特别看重系统的安全性，尤其在授权认证方面；在我们看来，HBase 现在已经将安全特性方面的工作加入到项目中了，这样的话后面就不再进一步讨论 Accumulo 了。
 
 HBase 是一个分布式键值存储系统，数据是通过排好序的 map 形式存储，也就是说数据都是经过对 key 列排序的，就像我们下面要描述的那样，HBase 典型的用例是 OLTP 应用，HDFS 是一个文件系统并能够以分布式的方式存储极大容量的数据集合；
-
 HBase 在 HDFS 里存储的数据是以 HFile 格式存入的，这种格式不可配置。当不使用 HBase 而直接使用 HDFS 时，用户是必须要选择一种文件格式；
 
 当进行文件格式选择时是有许多要点需要考虑的，比如，
-
 主要的读取模式是怎样的？是读取所有行呢，还是只读取所有行数据的一个子集；
 数据是不是还可能含有非 ASCII 码的文本内容？
 哪些工具会读写这些数据呢（Apache Hive,  Spark ?）；
@@ -68,9 +67,9 @@ HBase （以及Phoenix） 项目对于那些基于 RDBMS 之上，在应用扩�
 
 
 这个领域包含几个子目录：
-Apache Hive
-Dremel clones
-Spark SQL
+* Apache Hive
+* Dremel clones
+* Spark SQL
 
 Apache Hive
 本项目最初由脸谱公司创建，Hive 是第一个基于 Hadoop 之上的 SQL 引擎，且至今仍是最成熟的。Hive 原先是构建在MapReduce之上的，也曾经被改造过以便运行在 Apache Tez 上，现在正在进行的是为适应 Apache Spark 而进行的改造，基于 Spark 的Hive 改造被称为是最后的工作，但不能与 Spark 项目上的其他 SQL 支持项目相互混淆，关于 Spark 上的其他 SQL 支持项目我会再找个合适时机进行讨论。
