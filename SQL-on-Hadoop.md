@@ -50,7 +50,7 @@ row-wise 格式，比如有受限定的文本格式、Sequence 文件格式以�
 其中 ORC 是性能最好的 Apache Hive 文件格式。
 ```
 
-###在线事务处理
+##在线事务处理 ( OLTP )
 ```
 Apache HBase 项目提供 OLTP 类型的操作并极具扩展性，HBase 是唯一一个通常用于在线用户数据存储的Hadoop子模块，
 但是 HBase 项目的目标并不是做一个关系型数据库管理系统，而且它也不是为了替换 MySQL、Oracle 或者 DB2 这类关系型数据库的，
