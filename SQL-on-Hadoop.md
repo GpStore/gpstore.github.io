@@ -1,4 +1,5 @@
-
+#SQL on Hadoop 的真相
+```
 英文出处：phdata.io。
 这是一组系列博文，目的是详尽介绍 SQL-on-Hadoop 。
 本系列的第一篇会介绍 Hadoop 系统的存储引擎和在线事务处理（简称 OLTP ）；
@@ -8,11 +9,12 @@
 SQL on Hadoop 是一个既令人兴奋又令人困扰的话题；
 几乎每周都有一个新的 SQL on Hadoop 支持项目似乎抓住过社区注意力，哪怕只是一个短暂的瞬间；
 在这个系列中，我们会讨论 Hadoop 系统上支持的每一类 SQL 解决方案，并对它们的架构，用例以及其他做出诚实的讨论。
-
-Hadoop 引擎上的 SQL 有许多广泛的应用领域：
-
+```
+##Hadoop 引擎上的 SQL 有许多广泛的应用领域：
+```
 * 数据处理与在线分析处理（OLAP）
 * 在线事务处理（OLTP）
+```
 
 存储引擎:
 今天 Hadoop 主要有三个存储引擎：分别是 Apache HBase、Apache Hadoop HDFS 和 Hadoop Accumulo。Apache Accumlo与 Hbase 非常相似，但它本是由 NSA 组织创建的项目，历史上特别看重系统的安全性，尤其在授权认证方面；在我们看来，HBase 现在已经将安全特性方面的工作加入到项目中了，这样的话后面就不再进一步讨论 Accumulo 了。
